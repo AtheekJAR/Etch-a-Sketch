@@ -1,18 +1,20 @@
-const count = 16;
-const boxContainer = document.querySelector(".box-container")
 
+const boxContainer = document.querySelector("#js-box-container")
+renderBoxes(16);
 
-
-for(let i=1; i<=count; i++) {
+function renderBoxes(count){
     for(let i=1; i<=count; i++) {
-        const box = document.createElement("div");
-        box.style.width = `calc(100% / ${count})`;
-        box.style.height = `calc(100% / ${count})`;
-        box.setAttribute("class", "box")
-        boxContainer.appendChild(box)
-
+        for(let i=1; i<=count; i++) {
+            const box = document.createElement("div");
+            box.style.width = `calc(100% / ${count})`;
+            box.style.height = `calc(100% / ${count})`;
+            box.setAttribute("class", "box")
+            boxContainer.appendChild(box)
+    
+        }
     }
 }
+
 
 // function for genarating a random RGBA color
 function getRandomRGBA() {
@@ -60,3 +62,16 @@ borderBtn.addEventListener("click", function(){
         })
     }
 })
+
+// eventListener for change size
+sizeBtn.addEventListener("click", function(){
+    sizeBtn.classList.toggle("clicked");
+    const boxCount = prompt("Enter a number between 2 and 100");
+    if(boxCount > 0 && boxCount <= 100) {
+        boxContainer.textContent = "";
+        renderBoxes(boxCount);
+    }else {
+        alert("Please enter a number between 2 and 100");
+    }
+    
+});
