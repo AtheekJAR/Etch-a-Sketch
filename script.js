@@ -32,6 +32,7 @@ const clearBtn = document.getElementById("js-clear-btn");
 
 let rainbowFunc; // place holder for the eventListner of ".box-container"
 
+// eventListner for rainbow colour
 rainbowBtn.addEventListener("click", function(e){
     rainbowBtn.classList.toggle("clicked");
     if(rainbowBtn.classList.contains("clicked")) {
@@ -42,5 +43,20 @@ rainbowBtn.addEventListener("click", function(e){
         })
     }else {
         document.querySelector(".box-container").removeEventListener("mouseover", rainbowFunc);
+    }
+})
+
+// eventListner for toggle border
+borderBtn.addEventListener("click", function(){
+    borderBtn.classList.toggle("clicked");
+    let boxes = document.querySelectorAll(".box");
+    if(borderBtn.classList.contains("clicked")) {
+        boxes.forEach(function(box){
+            box.style.border = "1px solid black";
+        })
+    }else {
+        boxes.forEach(function(box){
+            box.style.border = "none";
+        })
     }
 })
