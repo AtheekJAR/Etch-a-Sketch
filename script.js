@@ -65,9 +65,8 @@ borderBtn.addEventListener("click", function(){
 
 // eventListener for change size
 sizeBtn.addEventListener("click", function(){
-    sizeBtn.classList.toggle("clicked");
     const boxCount = prompt("Enter a number between 2 and 100");
-    if(boxCount > 0 && boxCount <= 100) {
+    if(boxCount > 1 && boxCount <= 100) {
         boxContainer.textContent = "";
         renderBoxes(boxCount);
     }else {
@@ -75,3 +74,9 @@ sizeBtn.addEventListener("click", function(){
     }
     
 });
+
+// eventListner for clear button
+clearBtn.addEventListener("click", function(){
+    boxContainer.textContent = "";
+    renderBoxes(16);
+})
