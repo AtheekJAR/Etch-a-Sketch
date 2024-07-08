@@ -13,3 +13,34 @@ for(let i=1; i<=count; i++) {
 
     }
 }
+
+// function for genarating a random RGBA color
+function getRandomRGBA() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    // Generate a random value for alpha (0-1) with two decimal places
+    const a = (Math.random()).toFixed(2);
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
+
+//Buttons variables
+const rainbowBtn = document.getElementById("js-rainbow-btn");
+const borderBtn = document.getElementById("js-border-btn");
+const sizeBtn = document.getElementById("js-size-btn");
+const clearBtn = document.getElementById("js-clear-btn");
+
+let rainbowFunc; // place holder for the eventListner of ".box-container"
+
+rainbowBtn.addEventListener("click", function(e){
+    rainbowBtn.classList.toggle("clicked");
+    if(rainbowBtn.classList.contains("clicked")) {
+        document.querySelector(".box-container").addEventListener("mouseover", rainbowFunc = function(e) {
+            if(e.target.matches(".box")){
+                e.target.style.backgroundColor = getRandomRGBA();
+            }
+        })
+    }else {
+        document.querySelector(".box-container").removeEventListener("mouseover", rainbowFunc);
+    }
+})
